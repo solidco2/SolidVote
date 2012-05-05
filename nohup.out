@@ -1,0 +1,5 @@
+./HelloWorld.js: line 1: syntax error near unexpected token `('
+./HelloWorld.js: line 1: `HelloWorld = function(){'
+Server running at localhost:8654
+Server running at localhost:8654
+Server running at localhost:7654
