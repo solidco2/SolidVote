@@ -1,0 +1,15 @@
+{
+	"id":"1",
+	"title":"黑姐投票系统",
+	"name":"请来投票",
+	"desc":"请认真选择所投的票，每人只保存一个投票结果，可以修改",
+	"vote-type":"multi",
+	"disable-selectall":"全选你妹啊，请认真给我选",
+	"votes":{
+		"1":"这是第一个选项",
+		"2":"这是第二个选项",
+		"3":"This is the third option",
+		"4":"Choose us all, OK?",
+		"5":"How dare U!"
+	}
+}

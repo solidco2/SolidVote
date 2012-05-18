@@ -1,0 +1,24 @@
+<!doctype html>
+<html>
+<head>
+	<meta charset="utf-8" />
+	<title>Upload Page</title>
+</head>
+<body>
+	<form method="post" enctype="multipart/form-data" action="/vote">
+		<input type="hidden" name="voteid" value="{node:vote["id"]}" />
+		<fieldset>
+			<legend>{node:vote["title"]}</legend>
+			{node-forin:k:vote["votes"]#
+			<p>
+				<input type="checkbox" id="vote_{node:vote["id"]}_{node:k}" name="vote_{node:vote["id"]}" value="{node:k}" />
+				<caption for="vote_{node:vote["id"]}_{node:k}">{node:vote["votes"][k]}</caption>
+			</p>
+			#}
+		</fieldset>
+		<input type="text" name="mailid" placeholder="请填写邮箱前缀" />
+		<input type="submit" value="提交投票" />
+	</form>
+</body>
+</html>
+

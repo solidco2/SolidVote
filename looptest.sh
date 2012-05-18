@@ -1,6 +1,6 @@
 abc=1
 while [ $abc -lt 100 ]; do
-	./server.js
+	./vote.js
 	echo 
 	echo restarting...
 	abc=`expr $abc + 1`;
