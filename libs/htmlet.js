@@ -34,7 +34,7 @@ function HtmlElement(tagName, attributes, children){
 					children[i] = children[i].nodes;
 				}
 				if (util.isArray(children[i])) {
-					children.splice.apply(children, [i, 1].concat(children[i]);
+					children.splice.apply(children, [i, 1].concat(children[i]));
 					i--;
 				}
 			}
