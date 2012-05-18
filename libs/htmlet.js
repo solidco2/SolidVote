@@ -23,8 +23,20 @@ function HtmlElement(tagName, attributes, children){
 		if(!util.isArray(children)){
 			if(children instanceof HtmlNodeInterface){
 				children = [children];
+			}else if(children instanceof HtmlSet){
+				children = children.nodes;
 			}else{
 				throw new Error("Arguments Type Error: children must be E() or T() Object or Array");
+			}
+		}else{
+			for(var i = 0; i < children.length; i++){
+				if (children[i] instanceof HtmlSet) {
+					children[i] = children[i].nodes;
+				}
+				if (util.isArray(children[i])) {
+					children.splice.apply(children, [i, 1].concat(children[i]);
+					i--;
+				}
 			}
 		}
 		if(typeof voidTagName.indexOf(this.tagName)>-1){
@@ -34,7 +46,7 @@ function HtmlElement(tagName, attributes, children){
 	}
 };
 function E(tagName, attributes, children){
-	if(util.isArray(attributes) && !children){
+	if((util.isArray(attributes) || attributes instanceof HtmlSet) && !children){
 		children = attributes;
 		attributes = null;
 	}
@@ -49,6 +61,19 @@ function HtmlText(text){
 };
 function T(text){
 	return new HtmlText(text);
+};
+function HtmlSet(nodes){
+	this.nodes = nodes || [];
+};
+function S(nodes){
+	var arr = [];
+	for(var i = 0; i < arguments.length; i++){
+		if(util.isArray(arguments[i])){
+			arr = arr.join(arguments[i]);
+		}
+		else arr.push(arguments[i]);
+	}
+	return new HtmlSet(arr);
 };
 
 HtmlElement.prototype = new HtmlNodeInterface();
@@ -111,6 +136,7 @@ function stringify(htmlroot, doctype){
 
 exports.E = E;
 exports.T = T;
+exports.S = S;
 exports.DOCTYPE = html5_doctype;
 exports.stringify = stringify;
 
